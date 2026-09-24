@@ -305,26 +305,33 @@ modal.addEventListener('click',e=>{if(e.target.dataset.challengeClose)closeChall
  document.querySelectorAll('.stat-detail[data-stat]').forEach(el=>{el.addEventListener('click',()=>openStat(el));el.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();openStat(el)}})});modal.addEventListener('click',e=>{if(e.target.dataset.statClose)closeStat()});document.addEventListener('keydown',e=>{if(e.key==='Escape'&&modal.classList.contains('open'))closeStat()});
 })();
 </script>
-<style id="challenge-mobile-force-three">
-/* Final cascade guard: force three Challenge Collection cards per row on portrait phones. */
-@media screen and (max-width:650px){
+<style id="challenge-mobile-responsive-final">
+/* Final mobile layout: readable 2-up portrait cards; compact 3-up landscape cards. Desktop rules remain unchanged. */
+@media screen and (max-width:650px) and (orientation:portrait){
   .challenge-grid{
     display:grid!important;
-    grid-template-columns:repeat(3,minmax(0,1fr))!important;
-    gap:5px!important;
+    grid-template-columns:repeat(2,minmax(0,1fr))!important;
+    gap:7px!important;
   }
   .challenge{
     width:auto!important;min-width:0!important;max-width:none!important;
-    padding:6px!important;min-height:66px!important;
-    grid-template-columns:23px minmax(0,1fr)!important;
-    gap:3px 5px!important;
+    padding:8px!important;min-height:72px!important;
+    grid-template-columns:30px minmax(0,1fr)!important;
+    gap:4px 7px!important;
   }
-  .challenge .ci{width:23px!important;height:23px!important;font-size:8px!important;border-radius:8px!important}
+  .challenge .ci{width:30px!important;height:30px!important;font-size:10px!important;border-radius:9px!important}
   .challenge .ct{min-width:0!important}
-  .challenge .ct h3{font-size:9px!important;padding-right:23px!important}
-  .challenge .ct p{font-size:7px!important;height:17px!important}
-  .challenge>strong{right:5px!important;top:7px!important;font-size:8px!important}
-  .challenge .bar{height:3px!important;margin-top:4px!important}
+  .challenge .ct h3{font-size:11px!important;line-height:1.08!important;padding-right:30px!important;white-space:normal!important;overflow:visible!important;text-overflow:clip!important}
+  .challenge .ct p{font-size:8px!important;line-height:1.15!important;height:19px!important}
+  .challenge>strong{right:7px!important;top:8px!important;font-size:9px!important}
+  .challenge .bar{height:3px!important;margin-top:5px!important}
+}
+@media screen and (max-width:900px) and (orientation:landscape){
+  .challenge-grid{
+    display:grid!important;
+    grid-template-columns:repeat(3,minmax(0,1fr))!important;
+    gap:7px!important;
+  }
 }
 </style>
 </body></html>
