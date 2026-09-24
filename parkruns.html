@@ -402,4 +402,25 @@ modal.addEventListener('click',e=>{if(e.target.dataset.challengeClose)closeChall
   }
 }
 </style>
+
+<style id="challenge-full-titles-v9">
+/* V9: full challenge names on desktop/tablet while preserving the approved responsive grid. */
+@media screen and (min-width:651px){
+  .challenge{min-height:82px;}
+  .challenge .ct h3{
+    white-space:normal;
+    overflow:visible;
+    text-overflow:clip;
+    display:-webkit-box;
+    -webkit-box-orient:vertical;
+    -webkit-line-clamp:2;
+    line-clamp:2;
+    min-height:2.2em;
+    overflow:hidden;
+  }
+}
+@media screen and (min-width:1101px){
+  .challenge{min-height:84px;}
+}
+</style>
 </body></html>
