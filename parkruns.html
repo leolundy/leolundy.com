@@ -551,6 +551,72 @@ document.addEventListener('DOMContentLoaded',function(){
   .run-card .venue-history-list{max-height:190px!important}
 }
 </style>
+
+<style id="desktop-run-history-tall-list-final">
+/* Desktop only: use all remaining popup height for long venue histories.
+   The popup itself never scrolls; only the results list does. Mobile is untouched. */
+@media (min-width:561px){
+  .run-card .venue-history{
+    flex:1 1 auto!important;
+    min-height:0!important;
+    display:flex!important;
+    flex-direction:column!important;
+    overflow:hidden!important;
+  }
+  .run-card .venue-history-list{
+    flex:1 1 auto!important;
+    min-height:0!important;
+    height:auto!important;
+    max-height:none!important;
+    overflow-y:auto!important;
+    overflow-x:hidden!important;
+  }
+}
+</style>
+
+<style id="run-popup-true-viewport-overlay">
+/* Desktop architecture fix: the run popup is a true viewport-level overlay,
+   independent of the parkrun section's height. Mobile rules remain unchanged. */
+@media (min-width:821px){
+  body.run-popup-open{overflow:hidden!important;}
+  .run-modal{
+    position:fixed!important;
+    inset:0!important;
+    width:100%!important;
+    height:100%!important;
+    min-height:0!important;
+    overflow:hidden!important;
+    z-index:2147483000!important;
+  }
+  .run-modal-backdrop{position:absolute!important;inset:0!important;}
+  .run-card{
+    position:absolute!important;
+    left:50%!important;
+    top:50%!important;
+    transform:translate(-50%,-50%)!important;
+    width:min(660px,calc(100% - 48px))!important;
+    max-height:calc(100% - 40px)!important;
+    overflow:hidden!important;
+    display:flex!important;
+    flex-direction:column!important;
+    box-sizing:border-box!important;
+  }
+  .run-card .venue-history{min-height:0!important;overflow:hidden!important;}
+  .run-card .venue-history-list{
+    max-height:min(52vh,520px)!important;
+    overflow-y:auto!important;
+    overflow-x:hidden!important;
+    overscroll-behavior:contain!important;
+    scrollbar-gutter:stable!important;
+  }
+}
+</style>
+
+<style id="single-run-history-hide-fix">
+/* A venue history is supplementary only when there is more than one run.
+   Keep the JS hidden state authoritative despite later flex layout rules. */
+.venue-history[hidden]{display:none!important;}
+</style>
 </head><body><main class="wrap"><header class="hero"><div class="stats"><div class="stat stat-total stat-detail" data-stat="total" role="button" tabindex="0" aria-label="Open details for 99 parkruns"><b>99</b><span>parkruns</span></div><div class="stat stat-wava stat-detail" data-stat="wava" role="button" tabindex="0" aria-label="Open top 10 WAVA performances" title="Top 10 WAVA performances"><b>72.89%</b><span>best WAVA · Malahide</span></div><div class="stat stat-pb stat-detail" data-stat="pb" role="button" tabindex="0" aria-label="Open parkrun personal best details" title="Malahide · Personal best"><b>19:55</b><span>parkrun PB · Malahide</span></div><div class="stat stat-year stat-detail" data-stat="2026" role="button" tabindex="0" aria-label="Open 2026 parkrun progress"><b>22</b><span>runs in 2026</span></div></header><div class="countries"><div class="country country-detail" data-country="Ireland" role="button" tabindex="0" aria-label="Open Ireland parkrun locations"><img alt="flag" class="flag" src="https://flagcdn.com/w40/ie.png"/><b>Ireland</b></div><div class="country country-detail" data-country="Northern Ireland" role="button" tabindex="0" aria-label="Open Northern Ireland parkrun locations"><img alt="Northern Ireland" class="flag" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2060%2030%22%3E%0A%3Crect%20width%3D%2260%22%20height%3D%2230%22%20fill%3D%22white%22%2F%3E%0A%3Cpath%20d%3D%22M0%200%20L60%2030%20M60%200%20L0%2030%22%20stroke%3D%22%23c8102e%22%20stroke-width%3D%225%22%2F%3E%0A%3Cpath%20d%3D%22M0%200%20L60%2030%20M60%200%20L0%2030%22%20stroke%3D%22white%22%20stroke-width%3D%222%22%2F%3E%0A%3Cpath%20d%3D%22M26%200h8v30h-8zM0%2011h60v8H0z%22%20fill%3D%22%23c8102e%22%2F%3E%0A%3Cpath%20d%3D%22M30%208l2%204%204%20.6-3%203%20.8%204.4-3.8-2-3.8%202%20.8-4.4-3-3%204-.6z%22%20fill%3D%22white%22%20stroke%3D%22%23c8102e%22%20stroke-width%3D%22.8%22%2F%3E%0A%3Ccircle%20cx%3D%2230%22%20cy%3D%2215%22%20r%3D%223.3%22%20fill%3D%22white%22%20stroke%3D%22%23c8102e%22%20stroke-width%3D%22.8%22%2F%3E%0A%3Cpath%20d%3D%22M28.3%2016.5c1.2-3.2%202.2-3.2%203.4%200M30%2012.5v5%22%20stroke%3D%22%23c8102e%22%20stroke-width%3D%22.7%22%20fill%3D%22none%22%2F%3E%0A%3Cpath%20d%3D%22M27%207.5h6l-1-1.5h-4z%22%20fill%3D%22%23f5c242%22%20stroke%3D%22%23c8102e%22%20stroke-width%3D%22.5%22%2F%3E%0A%3C%2Fsvg%3E"/><b>Northern Ireland</b></div><div class="country country-detail" data-country="England" role="button" tabindex="0" aria-label="Open England parkrun locations"><img alt="England" class="flag" src="https://flagcdn.com/w40/gb-eng.png"/><b>England</b></div><div class="country country-detail" data-country="Wales" role="button" tabindex="0" aria-label="Open Wales parkrun locations"><img alt="Wales" class="flag" src="https://flagcdn.com/w40/gb-wls.png"/><b>Wales</b></div><div class="country country-detail" data-country="Australia" role="button" tabindex="0" aria-label="Open Australia parkrun locations"><img alt="flag" class="flag" src="https://flagcdn.com/w40/au.png"/><b>Australia</b></div><div class="country country-detail" data-country="USA" role="button" tabindex="0" aria-label="Open USA parkrun locations"><img alt="flag" class="flag" src="https://flagcdn.com/w40/us.png"/><b>USA</b></div><div class="country"><img alt="flag" class="flag" src="https://flagcdn.com/w40/nl.png"/><b>Netherlands</b><small>soon</small></div></div><section class="parkrun-explore" id="parkrunExplore"><div class="explore-head"><div><div class="eyebrow">parkrun</div><h2>Challenges</h2></div></div><div class="explore-grid">
 <button class="explore-card alpha-one" data-view="alpha1"><span class="explore-kicker">Alphabeteer I</span><span class="explore-number">24 / 25</span><span class="alpha-sculpture" aria-hidden="true"><span class="az">A·Z</span><span class="roman">I</span></span><span class="alpha-dial" style="--p:96">96<small>%</small></span></button>
 <button class="explore-card alpha-two" data-view="alpha2"><span class="explore-kicker">Alphabeteer II</span><span class="explore-number">9 / 25</span><span class="alpha-sculpture" aria-hidden="true"><span class="az">A·Z</span><span class="roman">II</span></span><span class="alpha-dial" style="--p:36">36<small>%</small></span></button>
@@ -577,13 +643,16 @@ function openRun(id,trigger){const d=ALPHA_RUNS[id];if(!d)return;$('runSet').tex
   const secs=(a.length===3?a[0]*3600+a[1]*60+a[2]:a[0]*60+a[1]);
   const perKm=Math.round(secs/5);
   return Math.floor(perKm/60)+':'+String(perKm%60).padStart(2,'0')+'/km';
-})(d.time);const vb=$('runVolunteer');if(d.volunteer){vb.hidden=false;vb.textContent='Volunteer · '+d.volunteer}else vb.hidden=true;const link=$('runLink');if(d.url){link.hidden=false;link.href=d.url;link.textContent='Visit '+d.venue.replace(' (closed)','')+' parkrun ↗'}else link.hidden=true;$('runNote').textContent=d.closed?'Event closed · official event page/archive linked below.':'';const vh=$('venueHistory'),vhl=$('venueHistoryList'),vhc=$('venueHistoryCount');const venueKey=d.venue.replace(' (closed)','');const runs=VENUE_HISTORY[venueKey]||[];if(runs.length>1){vh.hidden=false;vhc.textContent=runs.length+' runs';vhl.innerHTML=runs.map(x=>'<div class="venue-history-row"><time>'+x.date+'</time><b>'+x.time+'</b></div>').join('')}else{vh.hidden=true;vhl.innerHTML='';vhc.textContent=''};modal.classList.add('open');modal.setAttribute('aria-hidden','false');
-const card=modal.querySelector('.run-card');
-const r=trigger.getBoundingClientRect();
-const y=Math.max(18, window.scrollY+r.top-110);
-card.style.top=y+'px';
-requestAnimationFrame(()=>card.scrollIntoView({block:'center',behavior:'smooth'}));}
-function closeRun(){modal.classList.remove('open');modal.setAttribute('aria-hidden','true')}
+})(d.time);const vb=$('runVolunteer');if(d.volunteer){vb.hidden=false;vb.textContent='Volunteer · '+d.volunteer}else vb.hidden=true;const link=$('runLink');if(d.url){link.hidden=false;link.href=d.url;link.textContent='Visit '+d.venue.replace(' (closed)','')+' parkrun ↗'}else link.hidden=true;$('runNote').textContent=d.closed?'Event closed · official event page/archive linked below.':'';const vh=$('venueHistory'),vhl=$('venueHistoryList'),vhc=$('venueHistoryCount');const venueKey=d.venue.replace(' (closed)','');const runs=VENUE_HISTORY[venueKey]||[];if(runs.length>1){vh.hidden=false;vhc.textContent=runs.length+' runs';vhl.innerHTML=runs.map(x=>'<div class="venue-history-row"><time>'+x.date+'</time><b>'+x.time+'</b></div>').join('')}else{vh.hidden=true;vhl.innerHTML='';vhc.textContent=''};
+if(window.matchMedia('(min-width:821px)').matches && modal.parentElement!==document.body){document.body.appendChild(modal);}
+modal.classList.add('open');modal.setAttribute('aria-hidden','false');
+if(window.matchMedia('(min-width:821px)').matches){
+  document.body.classList.add('run-popup-open');
+  const card=modal.querySelector('.run-card');
+  card.style.top='50%';
+}
+}
+function closeRun(){modal.classList.remove('open');modal.setAttribute('aria-hidden','true');document.body.classList.remove('run-popup-open')}
 document.addEventListener('click',e=>{const el=e.target.closest('.letter.done[data-run]');if(el)openRun(el.dataset.run,el)});document.addEventListener('keydown',e=>{const el=e.target.closest&&e.target.closest('.letter.done[data-run]');if(el&&(e.key==='Enter'||e.key===' ')){e.preventDefault();openRun(el.dataset.run,el)}});modal.addEventListener('click',e=>{if(e.target.dataset.close)closeRun()});document.addEventListener('keydown',e=>{if(e.key==='Escape'&&modal.classList.contains('open'))closeRun()})})();</script><script id="challenge-popup-script">
 (function(){
 const RULES={
