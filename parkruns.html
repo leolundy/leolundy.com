@@ -663,4 +663,79 @@ document.addEventListener('DOMContentLoaded',function(){
  document.querySelectorAll('.country-detail').forEach(tile=>{tile.setAttribute('aria-expanded','false');tile.addEventListener('click',e=>{e.stopPropagation();if(active===tile&&pop.classList.contains('open'))close();else open(tile)});tile.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();open(tile)}else if(e.key==='Escape')close()})});
  pop.addEventListener('click',e=>e.stopPropagation()); document.addEventListener('click',close); document.addEventListener('keydown',e=>{if(e.key==='Escape')close()}); window.addEventListener('resize',()=>{if(active)place(active)}); window.addEventListener('scroll',()=>{if(active)place(active)},{passive:true});
 });
-</script></body></html>
+</script>
+<style id="challenge-desktop-space-refinement">
+/* Desktop/laptop only. Everything at 820px and below is deliberately untouched. */
+@media (min-width:821px){
+  .challenge{
+    position:relative!important;
+    grid-template-columns:30px minmax(0,1fr)!important;
+    grid-template-rows:auto!important;
+    column-gap:7px!important;
+    min-height:84px!important;
+    padding:9px 10px!important;
+    align-items:start!important;
+  }
+  .challenge .ci{
+    width:30px!important;
+    height:30px!important;
+    align-self:start!important;
+  }
+  .challenge .ct{
+    min-width:0!important;
+    width:100%!important;
+    padding:0!important;
+  }
+  .challenge .ct h3{
+    margin:0 0 4px!important;
+    padding-right:36px!important;
+    font-size:10.75px!important;
+    line-height:1.08!important;
+    min-height:0!important;
+    max-height:none!important;
+    height:auto!important;
+    white-space:normal!important;
+    overflow:visible!important;
+    text-overflow:clip!important;
+    display:block!important;
+    -webkit-line-clamp:unset!important;
+    line-clamp:unset!important;
+  }
+  .challenge .ct p{
+    margin:0!important;
+    padding:0 2px 0 0!important;
+    font-size:8.5px!important;
+    line-height:1.18!important;
+    height:auto!important;
+    min-height:20px!important;
+    max-height:none!important;
+    white-space:normal!important;
+    overflow:visible!important;
+    text-overflow:clip!important;
+    display:block!important;
+    -webkit-line-clamp:unset!important;
+    line-clamp:unset!important;
+  }
+  .challenge>strong{
+    position:absolute!important;
+    top:9px!important;
+    right:9px!important;
+    font-size:9.5px!important;
+    line-height:1!important;
+    white-space:nowrap!important;
+  }
+  .challenge .bar{
+    width:100%!important;
+    height:4px!important;
+    margin-top:7px!important;
+  }
+  .challenge-grid .parkrun-history-link{
+    min-height:84px!important;
+  }
+}
+@media (min-width:1101px){
+  .challenge-grid{gap:9px!important}
+}
+</style>
+
+</body></html>
