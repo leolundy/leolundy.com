@@ -628,4 +628,34 @@ document.addEventListener('DOMContentLoaded',function(){
  document.querySelectorAll('.country-detail').forEach(tile=>{tile.setAttribute('aria-expanded','false');tile.addEventListener('click',e=>{e.stopPropagation();if(active===tile&&pop.classList.contains('open'))close();else open(tile)});tile.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();open(tile)}else if(e.key==='Escape')close()})});
  pop.addEventListener('click',e=>e.stopPropagation()); document.addEventListener('click',close); document.addEventListener('keydown',e=>{if(e.key==='Escape')close()}); window.addEventListener('resize',()=>{if(active)place(active)}); window.addEventListener('scroll',()=>{if(active)place(active)},{passive:true});
 });
-</script></body></html>
+</script>
+<style id="mobile-title-no-truncation-final">
+/* Mobile correction: challenge titles must always be shown in full. */
+@media screen and (max-width:650px) and (orientation:portrait){
+  .challenge{min-height:86px!important;height:auto!important;align-items:center!important}
+  .challenge .ct{padding-right:34px!important;overflow:visible!important}
+  .challenge .ct h3{
+    display:block!important;
+    white-space:normal!important;
+    overflow:visible!important;
+    text-overflow:clip!important;
+    -webkit-line-clamp:unset!important;
+    line-clamp:unset!important;
+    min-height:0!important;
+    max-height:none!important;
+    height:auto!important;
+    overflow-wrap:normal!important;
+    word-break:normal!important;
+    hyphens:none!important;
+    font-size:11px!important;
+    line-height:1.08!important;
+    margin:0!important;
+  }
+  .challenge .ct p{display:none!important}
+}
+@media screen and (max-width:360px) and (orientation:portrait){
+  .challenge{min-height:84px!important}
+  .challenge .ct h3{font-size:10.5px!important}
+}
+</style>
+</body></html>
