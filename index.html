@@ -127,6 +127,16 @@
   }
 }
 </style>
+<style id="parkrun-wide-desktop-shell-fix">
+/* Desktop only: let the embedded parkrun section use the otherwise empty side space.
+   Other site sections and mobile/tablet widths remain unchanged. */
+@media (min-width:1101px){
+  #parkrun .wrap{
+    width:min(1380px,calc(100% - 28px));
+    max-width:none;
+  }
+}
+</style>
 </head><body>
 <nav class="nav"><a class="brand" href="#top">LEO <i>LUNDY, PhD</i></a><div class="navlinks"><a href="#marathons">Marathon World</a><a href="#counties">Counties</a><a href="#parkrun">parkrun</a><a href="#research">Research</a><a href="#contact">Contact</a><a class="cta" href="https://multimarathon.research.st" target="_blank">Explore the Study ↗</a></div><details class="mobile-menu"><summary>Menu</summary><div class="mobile-menu-panel"><a href="#marathons">Marathon World</a><a href="#counties">Counties</a><a href="#parkrun">parkrun</a><a href="#research">Research</a><a href="#contact">Contact</a><a href="https://multimarathon.research.st" target="_blank">Explore the Study ↗</a></div></details></nav>
 <header class="hero" id="top"><div class="gridbg"></div><div class="hero-inner"><div><h1>LEO <span>LUNDY</span></h1><div class="phd">PhD</div><div class="actions"><a class="btn primary" href="#marathons">Explore Marathon World ↓</a><a class="btn" href="#research">Research & publications →</a></div></div><div class="profile"><img src="https://spaces-cdn.owlstown.com/blobs/pyao9pr3ldvtaikp2too03oxxxib" alt="Leo Lundy, PhD"></div></div><div class="marquee"><div class="track"><span><b>400+</b> marathons & ultras</span><span><b>100+</b> parkruns</span><span><b>7</b> research studies</span><span><b>1000+</b> multi-marathoners</span><span><b>400+</b> marathons & ultras</span><span><b>100+</b> parkruns</span><span><b>7</b> research studies</span><span><b>1000+</b> multi-marathoners</span></div></div>
