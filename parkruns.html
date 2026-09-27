@@ -630,6 +630,26 @@ document.addEventListener('DOMContentLoaded',function(){
   }
 }
 </style>
+
+<style id="desktop-run-popup-six-row-refinement">
+/* Desktop only: compact venue popup header/content to give the run history about six visible rows. Mobile remains unchanged. */
+@media (min-width:561px){
+  .run-card{padding:18px 20px 19px;}
+  .run-head{grid-template-columns:60px 1fr;gap:13px;margin:9px 0 13px;}
+  .run-letter{width:60px;height:60px;border-radius:15px;font-size:32px;}
+  .run-head h2{font-size:28px;line-height:1.02;}
+  .run-head p{margin-top:5px;font-size:14px;}
+  .run-metrics{gap:7px;}
+  .run-metrics div{padding:9px 11px;}
+  .run-metrics span{margin-bottom:3px;}
+  .run-metrics strong{font-size:17px;}
+  .run-link{margin-top:11px;padding:11px 14px;}
+  .venue-history{margin-top:11px;padding-top:10px;}
+  .venue-history-head{margin-bottom:6px;}
+  .venue-history-list{max-height:192px;}
+  .venue-history-row{padding:7px 11px;}
+}
+</style>
 </head><body><main class="wrap"><header class="hero"><div class="stats"><div aria-label="Open details for 99 parkruns" class="stat stat-total stat-detail" data-stat="total" role="button" tabindex="0"><b>99</b><span>parkruns</span></div><div aria-label="Open top 10 WAVA performances" class="stat stat-wava stat-detail" data-stat="wava" role="button" tabindex="0" title="Top 10 WAVA performances"><b>72.89%</b><span>best WAVA · Malahide</span></div><div aria-label="Open parkrun personal best details" class="stat stat-pb stat-detail" data-stat="pb" role="button" tabindex="0" title="Malahide · Personal best"><b>19:55</b><span>parkrun PB · Malahide</span></div><div aria-label="Open 2026 parkrun progress" class="stat stat-year stat-detail" data-stat="2026" role="button" tabindex="0"><b>22</b><span>runs in 2026</span></div></div></header><div class="countries"><div aria-label="Open Ireland parkrun locations" class="country country-detail" data-country="Ireland" role="button" tabindex="0"><img alt="flag" class="flag" src="https://flagcdn.com/w40/ie.png"/><b>Ireland</b></div><div aria-label="Open Northern Ireland parkrun locations" class="country country-detail" data-country="Northern Ireland" role="button" tabindex="0"><img alt="Northern Ireland" class="flag" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2060%2030%22%3E%0A%3Crect%20width%3D%2260%22%20height%3D%2230%22%20fill%3D%22white%22%2F%3E%0A%3Cpath%20d%3D%22M0%200%20L60%2030%20M60%200%20L0%2030%22%20stroke%3D%22%23c8102e%22%20stroke-width%3D%225%22%2F%3E%0A%3Cpath%20d%3D%22M0%200%20L60%2030%20M60%200%20L0%2030%22%20stroke%3D%22white%22%20stroke-width%3D%222%22%2F%3E%0A%3Cpath%20d%3D%22M26%200h8v30h-8zM0%2011h60v8H0z%22%20fill%3D%22%23c8102e%22%2F%3E%0A%3Cpath%20d%3D%22M30%208l2%204%204%20.6-3%203%20.8%204.4-3.8-2-3.8%202%20.8-4.4-3-3%204-.6z%22%20fill%3D%22white%22%20stroke%3D%22%23c8102e%22%20stroke-width%3D%22.8%22%2F%3E%0A%3Ccircle%20cx%3D%2230%22%20cy%3D%2215%22%20r%3D%223.3%22%20fill%3D%22white%22%20stroke%3D%22%23c8102e%22%20stroke-width%3D%22.8%22%2F%3E%0A%3Cpath%20d%3D%22M28.3%2016.5c1.2-3.2%202.2-3.2%203.4%200M30%2012.5v5%22%20stroke%3D%22%23c8102e%22%20stroke-width%3D%22.7%22%20fill%3D%22none%22%2F%3E%0A%3Cpath%20d%3D%22M27%207.5h6l-1-1.5h-4z%22%20fill%3D%22%23f5c242%22%20stroke%3D%22%23c8102e%22%20stroke-width%3D%22.5%22%2F%3E%0A%3C%2Fsvg%3E"/><b>Northern Ireland</b></div><div aria-label="Open England parkrun locations" class="country country-detail" data-country="England" role="button" tabindex="0"><img alt="England" class="flag" src="https://flagcdn.com/w40/gb-eng.png"/><b>England</b></div><div aria-label="Open Wales parkrun locations" class="country country-detail" data-country="Wales" role="button" tabindex="0"><img alt="Wales" class="flag" src="https://flagcdn.com/w40/gb-wls.png"/><b>Wales</b></div><div aria-label="Open Australia parkrun locations" class="country country-detail" data-country="Australia" role="button" tabindex="0"><img alt="flag" class="flag" src="https://flagcdn.com/w40/au.png"/><b>Australia</b></div><div aria-label="Open USA parkrun locations" class="country country-detail" data-country="USA" role="button" tabindex="0"><img alt="flag" class="flag" src="https://flagcdn.com/w40/us.png"/><b>USA</b></div><div class="country"><img alt="flag" class="flag" src="https://flagcdn.com/w40/nl.png"/><b>Netherlands</b><small>soon</small></div></div><section class="parkrun-explore" id="parkrunExplore"><div class="explore-head"><div><div class="eyebrow">parkrun</div><h2>Challenges</h2></div></div><div class="explore-grid">
 <button class="explore-card alpha-one" data-view="alpha1"><span class="explore-kicker">Alphabeteer I</span><span class="explore-number">24 / 25</span><span aria-hidden="true" class="alpha-sculpture"><span class="az">A·Z</span><span class="roman">I</span></span><span class="alpha-dial" style="--p:96">96<small>%</small></span></button>
 <button class="explore-card alpha-two" data-view="alpha2"><span class="explore-kicker">Alphabeteer II</span><span class="explore-number">9 / 25</span><span aria-hidden="true" class="alpha-sculpture"><span class="az">A·Z</span><span class="roman">II</span></span><span class="alpha-dial" style="--p:36">36<small>%</small></span></button>
