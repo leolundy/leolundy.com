@@ -484,13 +484,23 @@ document.addEventListener('DOMContentLoaded',function(){
   max-height:none!important;
   overflow:visible!important;
 }
-/* Country result popovers use their full content height rather than a nested scrollbar. */
+/* Country result popovers: long country histories must stay inside the viewport and scroll. */
 .country-popover,
 .country-popover-detailed{
-  max-height:none!important;
-  overflow:visible!important;
-  overscroll-behavior:auto!important;
+  max-height:min(560px,calc(100dvh - 16px))!important;
+  overflow-y:auto!important;
+  overflow-x:hidden!important;
+  overscroll-behavior:contain!important;
+  scrollbar-gutter:stable;
+  -webkit-overflow-scrolling:touch;
 }
+@media(max-width:650px){
+  .country-popover,
+  .country-popover-detailed{max-height:min(70dvh,470px)!important;}
+}
+.country-popover::-webkit-scrollbar{width:9px}
+.country-popover::-webkit-scrollbar-thumb{background:#55758a;border-radius:999px;border:2px solid #0b2235}
+.country-popover::-webkit-scrollbar-track{background:#0b2235}
 </style>
 <style id="run-popup-final-scroll-behaviour">
 /* Final popup rule: never make the surrounding page/iframe scroll for a run popup.
